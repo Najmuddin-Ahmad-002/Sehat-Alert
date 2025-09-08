@@ -121,6 +121,36 @@
   </style>
 </head>
 <body class="container py-4">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded mb-4" style="border-radius: 14px;">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="index.html">Smart Health</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about-section">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#form-section">Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="alert('Contact info coming soon!')">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="alert('FAQ coming soon!')">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div class="hero mb-5">
     <div class="hero-content">
       <div class="hero-title">Community Health Reporting</div>
@@ -134,9 +164,16 @@
     <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_8wREpI.json" background="transparent" speed="1" style="width: 320px; height: 220px; padding: 12px; border-radius: 16px; background: #fff;" loop autoplay></lottie-player>
   </div>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <div class="about-section text-center">
+  <div id="about-section" class="about-section text-center">
     <h4 class="text-primary mb-2">About This Website</h4>
-    <p style="color:#333;">This Community Health Reporting platform is designed for quick, anonymous reporting of health symptoms and cases in your area. It empowers communities and health workers to monitor trends, spot outbreaks early, and respond faster. All reports are stored locally in your browser for privacy and demo purposes. Try submitting a report and see it instantly on the dashboard!</p>
+    <div class="text-start mx-auto" style="max-width: 600px;">
+      <p style="color:#333; font-size:1.1rem;">
+        Welcome to the Community Health Reporting platform. Here, you can quickly and anonymously share any health symptoms or cases you notice in your area. Your reports help us spot problems early and keep your community safe.<br><br>
+        <span style="color:#2196F3; font-weight:500;">How does it work?</span><br>
+        Just fill out the simple form below. Your information stays private and is only used to help health workers respond faster to outbreaks.<br><br>
+        <span style="color:#4CAF50; font-weight:500;">Thank you for caring for your community!</span>
+      </p>
+    </div>
   </div>
   <div id="form-section" class="form-card mt-4">
     <h2 class="mb-3 text-center text-primary">Submit a Health Report</h2>
@@ -170,8 +207,18 @@
       reports.push({ name, village, symptoms });
       localStorage.setItem('reports', JSON.stringify(reports));
       this.reset();
-      window.location.href = 'dashboard.html';
+      // Show a success message instead of redirecting
+      const successDiv = document.createElement('div');
+      successDiv.className = 'alert alert-success mt-3';
+      successDiv.innerHTML = 'Report submitted successfully! <a href="dashboard.html" class="alert-link">View Dashboard</a>';
+      this.parentNode.insertBefore(successDiv, this.nextSibling);
+      setTimeout(() => { successDiv.remove(); }, 4000);
     };
+    // Set footer year dynamically
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
+  <footer class="bg-white text-center py-3 mt-5 shadow-sm rounded" style="border-radius: 14px; font-size: 1.1rem;">
+    <span>Made with <span style="color: #e25555;">&#10084;&#65039;</span> by <strong>Binary Bards</strong> &copy; <span id="footer-year"></span></span>
+  </footer>
 </body>
 </html>
