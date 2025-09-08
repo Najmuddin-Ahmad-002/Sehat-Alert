@@ -26,9 +26,20 @@ const waterBorneKeywords = /diarrhea|cholera|typhoid|dysentery|vomiting|fever|co
 function loadAlerts() {
   const reports = JSON.parse(localStorage.getItem('reports') || '[]');
   const alerts = [];
+  // Water-borne alerts
   reports.forEach(r => {
     if (waterBorneKeywords.test(r.symptoms)) {
       alerts.push(`Alert: ${r.name} from ${r.village} reported symptoms: ${r.symptoms}`);
+    }
+  });
+  // Village cluster alert
+  const villageCounts = {};
+  reports.forEach(r => {
+    villageCounts[r.village] = (villageCounts[r.village] || 0) + 1;
+  });
+  Object.entries(villageCounts).forEach(([village, count]) => {
+    if (count > 4) {
+      alerts.push(`🚨 <b>Emergency:</b> Multiple health reports detected from <b>${village}</b>. Immediate action recommended!`);
     }
   });
   const alertsList = document.getElementById('alerts-list');
