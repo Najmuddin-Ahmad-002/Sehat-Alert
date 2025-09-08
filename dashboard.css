@@ -1,0 +1,77 @@
+/* Smart Community Health Monitoring Dashboard Styles */
+:root {
+  --primary: #2196F3;
+  --secondary: #4CAF50;
+  --accent: #FF9800;
+  --background: #F9FAFB;
+  --danger: #F44336;
+}
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: var(--background);
+}
+.dashboard-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem;
+  margin: 2rem 0;
+  max-width: 100vw;
+}
+.dashboard-title {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+.table thead {
+  background: #e3f2fd;
+}
+.table th, .table td {
+  vertical-align: middle;
+}
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-danger, .btn-danger:focus {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+.alert-section {
+  background: #fff3e0;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.08);
+}
+.alert-section h3 {
+  color: var(--danger);
+  font-weight: 700;
+}
+.alert-section ul {
+  margin-bottom: 0;
+}
+.alert-section li strong {
+  color: var(--danger);
+}
+@media (max-width: 900px) {
+  .dashboard-card { padding: 1.2rem 0.5rem; }
+  .alert-section { padding: 1rem 0.5rem; }
+}
+.animated-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
